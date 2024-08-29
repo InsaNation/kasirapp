@@ -1,0 +1,78 @@
+body {
+    overflow: hidden;
+}
+
+body,
+html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    /* Ensure content flows in a column */
+    justify-content: flex-start;
+    /* Align content to the top */
+    align-items: center;
+    background-color: #282c34;
+    padding-top: 50px;
+    /* Add some padding to the top */
+}
+
+.logo-section {
+    padding: 10px 0;
+    text-align: center;
+}
+
+.logo {
+    max-width: 200px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.5);
+}
+
+.form-container {
+    background-color: #3b3f45;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    margin-top: 20px;
+    /* Add some margin between the logo and the form */
+}
+
+.form-container label {
+    color: #fefefe;
+}
+
+.form-control {
+    width: 330px;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #A2CDF4;
+    color: #000000;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #91bbdc;
+}
+
+.error-message {
+    color: #ff6b6b;
+    font-size: 0.875em;
+    margin-top: 5px;
+}
