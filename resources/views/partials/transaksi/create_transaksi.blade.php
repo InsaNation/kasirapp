@@ -336,7 +336,6 @@
             generateInvoiceNumber(); // This will create a new invoice number
         }
 
-        generateInvoiceNumber();
 
         function printSummary() {
             // Get the recipe data from the table
@@ -350,7 +349,7 @@
             printWindow.document.write('<html><head><title>Arka Cashier</title>');
             printWindow.document.write(
                 '<style>body { font-family: Arial, sans-serif; } table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid #ddd; padding: 8px; } th { background-color: #f4f4f4; text-align: left; }</style>'
-                );
+            );
             printWindow.document.write('</head><body >');
             printWindow.document.write('<h1>Transaction Summary</h1>');
 
@@ -371,7 +370,7 @@
 
                 printWindow.document.write(
                     `<tr><td>${itemName}</td><td>Rp. ${price.toLocaleString('id-ID')}</td><td>${quantity}</td><td>Rp. ${subtotal.toLocaleString('id-ID')}</td></tr>`
-                    );
+                );
             });
 
             printWindow.document.write('</tbody></table>');
@@ -398,6 +397,8 @@
                 printWindow.print(); // Print the content
             };
         }
+
+        generateInvoiceNumber();
     </script>
 
 
