@@ -3,8 +3,44 @@
 ## How to open the project
 
 ```bash
-git clone 
+git clone https://github.com/NIxNref/ArkaCashier.git
+
+cd ArkaCashier
+
+composer install
+
+cp .env.example .env
+
+php artisan key:generate
 ```
+### .env config
+`
+DB_DATABASE=YOUR_DATABASE_NAME
+`
+<br>
+`
+DB_USERNAME=DATABASE_USERNAME
+`
+<br>
+`
+DB_PASSWORD=DATABASE_PASSWORD ( leave empty if not using password )
+`
+<br>
+
+
+```bash
+php artisan migrate
+```
+> you don't really need setup the .env, because you can use API that i have on my repo
+
+```bash
+npm install
+
+npm run build
+
+php artisan serve
+```
+
 <hr>
 
 ## About Laravel
