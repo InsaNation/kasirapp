@@ -14,12 +14,62 @@ class CashierController extends Controller
 {
     public function index_admin()
     {
-        return view('index_admin');
+        $daily_tran = Http::get('http://localhost:8001/api/daily_transaction');
+
+        $daily_transaction = $daily_tran->json()['daily_transaction'];
+
+
+        $daily_income = Http::get('http://localhost:8001/api/daily_income');
+
+        $daily_incomes = $daily_income->json()['daily_income'];
+
+         // Ambil data dari API
+        $monthly_income = Http::get('http://localhost:8001/api/monthly_income');
+
+        // Ambil nilai 'total_income' dari respons API
+        $monthly_incomes = $monthly_income->json()['monthly_income'];
+        
+        $monthly_transaction = Http::get('http://localhost:8001/api/monthly_transaction');
+
+        $monthly_transactions = $monthly_transaction->json()['monthly_transaction'];
+
+        // Kirim data ke view
+        return view('index_admin', compact('daily_transaction', 'daily_incomes', 'monthly_incomes', 'monthly_transactions'));
     }
 
     public function index_kasir()
     {
-        return view('index_kasir');
+        // Token disimpan di sesi pengguna setelah login
+        $token = session('auth_token'); 
+
+        try {
+            // Gunakan token untuk autentikasi
+            $transaction = Http::withHeaders([
+                'Authorization' => 'Bearer ' . $token
+            ])->get('http://localhost:8001/api/transaksi_kasir');
+
+            // Parse hasil JSON ke array
+            $transaksi = $transaction->json();
+            Log::info($transaksi);
+
+            // Kirim data ke view
+            return view('index_kasir', ['transaksi' => $transaksi]);
+        } catch (\Exception $e) {
+            // Tangani error
+            return response()->json([
+                'error' => 'Failed to fetch transactions.',
+                'message' => $e->getMessage(),
+            ], 500);
+        }
+    }
+
+
+
+
+
+    public function laporan()
+    {
+        return view('laporan');
     }
 
     
@@ -100,7 +150,7 @@ class CashierController extends Controller
     public function index_transaksi()
     {
         try {
-            $response = Http::get('http://localhost:8001/api/transaksi');
+            $response = Http::get('http://localhost:8001/api/transaksi_kasir');
 
             if ($response) {
                 $datas = json_decode($response->getBody()->getContents(), true);

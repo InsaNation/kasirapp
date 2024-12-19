@@ -12,7 +12,7 @@
             style="display: block; padding: 10px; text-decoration: none;">
             <span>Data</span>
         </a>
-        <div class="collapse{{ request()->is('admin/data') || request()->is('admin/data_items') ? 'show' : '' }}"
+        <div class="collapse{{ request()->is('admin/data') || request()->is('admin/data_items') || request()->is('admin/laporan') ? 'show' : '' }}"
             id="dataDropdown" style="padding-left: 15px;">
             <a href="{{ route('data_user') }}" class="{{ request()->is('admin/data') ? 'active' : '' }}"
                 style="display: block; padding: 10px; text-decoration: none;">
@@ -21,6 +21,10 @@
             <a href="{{ route('index_item') }}" class="{{ request()->is('admin/data_items') ? 'active' : '' }}"
                 style="display: block; padding: 10px; text-decoration: none;">
                 <span>Data Item</span>
+            </a>
+            <a
+                style="display: block; padding: 10px; text-decoration: none;">
+                <span>Laporan Transaksi (On Progress)</span>
             </a>
 
         </div>

@@ -15,13 +15,13 @@ use App\Http\Controllers\CashierController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // === Auth ===
 
-Route::get('/login', function () {
+Route::get('/', function () {
     
     if (auth()->check()) {
         return redirect()->route('dashboard_admin');
@@ -41,6 +41,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::prefix('admin')->middleware('auth')->group(function () {
     
     Route::get('/dashboard', [CashierController::class, 'index_admin'])->name('dashboard_admin'); // open dashboard view
+    Route::get('/laporan', [CashierController::class, 'laporan'])->name('laporan'); // open laporan view
 
     // === User ===
 

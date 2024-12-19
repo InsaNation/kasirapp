@@ -11,7 +11,9 @@
 
 <body>
     <div class="container-fluid py-4">
-        <h1>Transaksi</h1>
+        <div>
+            <h1>Nama kasir : <span id="cashier-name">{{ Auth::user()->name }}</span></h1>
+        </div>
 
         <table>
             <tr>
@@ -249,12 +251,12 @@
             }, 0);
 
             const totalCost = parseFloat(document.getElementById('total-cost').textContent.replace(/[^\d]/g, ''));
-
             const amountPaid = parseFloat(document.getElementById('amount-paid').value) || 0;
             const change = amountPaid - totalCost;
-
-            // Ambil invoice number dari elemen HTML yang sudah ditampilkan di halaman
             const invoiceCode = document.getElementById('invoice-number').textContent;
+
+            // Ambil kasir yang melakukan transaksi dari elemen HTML
+            const cashierName = document.getElementById('cashier-name').textContent;
 
             const details = Array.from(document.querySelectorAll('#product-table tbody tr')).map(row => ({
                 product_name: row.querySelector('td:nth-child(2)').textContent,
@@ -267,18 +269,19 @@
                 invoice_code: invoiceCode,
                 total_items: totalItems,
                 total_price: totalCost,
-                change: change, // Include change
-                bayar: amountPaid, // Include bayar
+                change: change,
+                bayar: amountPaid,
+                cashier: cashierName, // Tambahkan kasir di sini
                 details: details,
             };
 
             fetch('http://127.0.0.1:8001/api/transaksi/store', {
                     method: 'POST',
-                    credentials: 'include', // Important for including cookies
+                    credentials: 'include',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
-                        'X-XSRF-TOKEN': getCookie('XSRF-TOKEN'), // CSRF token
+                        'X-XSRF-TOKEN': getCookie('XSRF-TOKEN'),
                     },
                     body: JSON.stringify(transactionData),
                 })
@@ -296,7 +299,6 @@
                         title: 'Success',
                         text: 'Transaction successfully saved!',
                     });
-                    // Reset or clear the form as needed
                     printSummary();
                     resetForm();
                 })
@@ -309,6 +311,8 @@
                     });
                 });
         }
+
+
 
         function generateInvoiceNumber() {
             // Check if an invoice number is already in localStorage
@@ -352,6 +356,8 @@
             );
             printWindow.document.write('</head><body >');
             printWindow.document.write('<h1>Transaction Summary</h1>');
+            const invoiceCode = document.getElementById('invoice-number').textContent;
+            printWindow.document.write('<h4>Invoice Number : ' + invoiceCode + '</h4>');
 
             // Add the product table content
             printWindow.document.write('<h2>Items</h2>');

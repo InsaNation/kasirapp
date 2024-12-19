@@ -18,61 +18,33 @@
                     {{-- @include('partials.items.create_item') --}}
                     <div class="card mb-4 p">
                         <div class="card-header">
-                            <h6>Data Transaksi</h6>
+                            <h6>Data Transaksi (On Progress)</h6>
                         </div>
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    {{-- <th class="text-uppercase text-primary text-center">
-                                        Image</th> --}}
-                                    <th class="text-uppercase text-primary text-center">
-                                        Nama</th>
-                                    <th class="text-uppercase text-primary text-center">
-                                        Items Code</th>
-                                    <th class="text-uppercase text-primary text-center">
-                                        Stock</th>
-                                    <th class="text-uppercase text-primary text-center">
-                                        Price</th>
-                                    <th class="text-uppercase text-primary text-center">
-                                        Action</th>
+                                    <th>Invoice Code</th>
+                                    <th>Total Barang</th>
+                                    <th>Total Harga</th>
+                                    <th>Bayar</th>
+                                    <th>Kembalian</th>
+                                    <th>Cashier</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                {{-- @foreach ($datas as $data)
-                                    @if ($data['is_deleted'] == 0)
-                                        <tr>
-                                            <td>
-                                                <p class="text-secondary text-center px-3">{{ $data['name'] }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-secondary text-center px-3">{{ $data['items_code'] }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-secondary text-center px-3">{{ $data['stock'] }}</p>
-                                            </td>
-                                            <td>
-                                                <p class="text-secondary text-center px-3">{{ $data['price'] }}</p>
-                                            </td>
-                                            <td class="gap-3 text-center">
-                                                <button type="button" class="btn bg-gradient-info" data-bs-toggle="modal"
-                                                    data-bs-target="#editSiswa_{{ $data['id'] }}"
-                                                    data-book-id="{{ $data['id'] }}">
-                                                    Edit
-                                                </button>
-                                                @include('partials.items.update_item')
-                                                <form id="deleteForm_{{ $data['id'] }}"
-                                                    action="{{ route('item.delete', $data['id']) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="button" class="btn btn-danger"
-                                                        onclick="confirmDelete({{ $data['id'] }})">Delete</button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endif
+                            <tbody id="transaction-table-body">
+                                {{-- @foreach ($transaksi as $trans)
+                                    <tr>
+                                        <td>{{ $trans['invoice_code'] }}</td>
+                                        <td>{{ $trans['total_items'] }}</td>
+                                        <td>{{ $trans['total_price'] }}</td>
+                                        <td>{{ $trans['change'] }}</td>
+                                        <td>{{ $trans['bayar'] }}</td>
+                                        <td>{{ $trans['cashier'] }}</td>
+                                    </tr>
                                 @endforeach --}}
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
@@ -142,4 +114,48 @@
             })
         }
     </script>
+
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+            function showTransaksi() {
+                fetch('http://127.0.0.1:8001/api/transaksi_kasir', {
+                        method: 'GET',
+                        headers: {
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Content-Type': 'application/json'
+                        },
+                        credentials: 'include' // Include cookies in the request
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data);
+                        const tableBody = document.getElementById('transaction-table-body');
+                        tableBody.innerHTML = ''; // Clear any existing rows
+
+                        data.forEach(transaction => {
+                            const row = document.createElement('tr');
+
+                            row.innerHTML = `
+                    <td>${transaction.invoice_code}</td>
+                    <td>${transaction.total_items}</td>
+                    <td>${transaction.total_price}</td>
+                    <td>${transaction.bayar}</td>
+                    <td>${transaction.change}</td>
+                    <td>${transaction.cashier}</td>
+                `;
+
+                            tableBody.appendChild(row);
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error fetching transactions:', error);
+                    });
+            }
+
+            showTransaksi();
+        });
+    </script> --}}
+
 @endsection

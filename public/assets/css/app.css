@@ -8,18 +8,25 @@
     --text-color: #BDC3C7;
     /* Abu-abu Muda */
     --sidebar-bg-color: #343a40;
-    /* Warna khusus untuk sidebar */
+    /* Warna khusus untuk sidebar warna Mirage */
     --sidebar-hover-bg-color: #495057;
-    /* Warna hover untuk link di sidebar */
+    /* Warna hover untuk link di sidebar warna Davy's Grey */
     --sidebar-text-color: white;
     /* Warna teks di sidebar */
     --sidebar-active-bg-color: #495057;
-    /* Warna background link aktif di sidebar */
+    /* Warna background link aktif di sidebar warna Davy's Grey */
 }
 
 body {
     background-color: var(--background-color);
     color: var(--text-color);
+}
+
+.icon-shape {
+    width: 54px;
+    height: 54px;
+    background-position: center;
+    border-radius: 0.75rem;
 }
 
 .header {
