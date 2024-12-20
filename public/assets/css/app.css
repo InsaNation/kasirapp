@@ -1,13 +1,13 @@
 :root {
-    --primary-color: #34495E;
+    --primary-color: #3f0030;
     /* Abu-abu Tua */
-    --secondary-color: #E67E22;
+    --secondary-color: #ffff00;
     /* Oranye Terang */
     --background-color: #ECF0F1;
     /* Putih */
     --text-color: #BDC3C7;
     /* Abu-abu Muda */
-    --sidebar-bg-color: #343a40;
+    --sidebar-bg-color: #320028;
     /* Warna khusus untuk sidebar warna Mirage */
     --sidebar-hover-bg-color: #495057;
     /* Warna hover untuk link di sidebar warna Davy's Grey */

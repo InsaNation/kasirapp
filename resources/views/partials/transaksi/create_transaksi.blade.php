@@ -350,7 +350,7 @@
             const printWindow = window.open('', '', 'height=600,width=800');
 
             // Add content to the new window
-            printWindow.document.write('<html><head><title>Arka Cashier</title>');
+            printWindow.document.write('<html><head><title>Cashier</title>');
             printWindow.document.write(
                 '<style>body { font-family: Arial, sans-serif; } table { width: 100%; border-collapse: collapse; } th, td { border: 1px solid #ddd; padding: 8px; } th { background-color: #f4f4f4; text-align: left; }</style>'
             );

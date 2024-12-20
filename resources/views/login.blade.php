@@ -1,9 +1,6 @@
 @extends('layouts.main_login')
 
 @section('main_login')
-    <section class="logo-section align-center">
-        <img src="{{ asset('assets/img/logo/logo_transparent.png') }}" alt="Logo" class="logo">
-    </section>
     <section>
         <section class="form-container">
             <form role="form" method="POST" action="{{ route('login_users') }}">

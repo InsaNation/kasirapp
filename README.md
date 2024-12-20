@@ -3,9 +3,6 @@
 ## How to open the project
 
 ```bash
-git clone https://github.com/NIxNref/ArkaCashier.git
-
-cd ArkaCashier
 
 composer install
 

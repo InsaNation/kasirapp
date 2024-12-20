@@ -22,10 +22,12 @@
                 style="display: block; padding: 10px; text-decoration: none;">
                 <span>Data Item</span>
             </a>
-            <a
+            {{-- <a
                 style="display: block; padding: 10px; text-decoration: none;">
                 <span>Laporan Transaksi (On Progress)</span>
-            </a>
+            </a> --}} jadi ini di aktifin atau engga
+
+            kalo nampilin kasirnya gimana jadi
 
         </div>
     </div>

@@ -6,10 +6,10 @@
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
-                    <button type="button" class="button mb-4 custom-button" style="border-radius: 10px;" data-bs-toggle="modal"
+                    {{-- <button type="button" class="button mb-4 custom-button" style="border-radius: 10px;" data-bs-toggle="modal"
                         data-bs-target="#createModal">
                         Tambah Akun
-                    </button>
+                    </button> --}}
                     {{-- @include('partials.acc.create_admin') --}}
                     <div class="card mb-4">
                         <div class="card-header">
@@ -43,12 +43,12 @@
                                             </td>
                                             <td class="gap-3 text-center">
                                                 @if ($data['role'] !== 'admin')
-                                                    <button type="button" class="btn bg-gradient-info"
+                                                    {{-- <button type="button" class="btn bg-gradient-info"
                                                         data-bs-toggle="modal"
                                                         data-bs-target="#editSiswa_{{ $data['id'] }}"
                                                         data-book-id="{{ $data['id'] }}">
                                                         Edit
-                                                    </button>
+                                                    </button> --}}
                                                     {{-- @include('partials.modals.edit_admin') --}}
                                                     <form id="deleteForm_{{ $data['id'] }}" action="" method="POST">
                                                         @csrf

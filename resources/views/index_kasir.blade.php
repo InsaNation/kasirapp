@@ -1,6 +1,6 @@
 @extends('layouts.main_index_kasir')
 
-@section('title', 'Arka Kasir')
+@section('title', 'Kasir')
 @section('main_index')
     {{-- content --}}
     <div class="container-fluid py-4">
