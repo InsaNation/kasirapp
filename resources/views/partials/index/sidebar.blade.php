@@ -25,9 +25,7 @@
             {{-- <a
                 style="display: block; padding: 10px; text-decoration: none;">
                 <span>Laporan Transaksi (On Progress)</span>
-            </a> --}} jadi ini di aktifin atau engga
-
-            kalo nampilin kasirnya gimana jadi
+            </a> --}}
 
         </div>
     </div>
